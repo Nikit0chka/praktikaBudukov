@@ -2,18 +2,19 @@
 using System.IO;
 using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Controls;
 
 namespace Praktik1;
 
 public partial class EmployeeRegistrationWindow : Window
 {
-    private string _directoryPath = @"C:\Users\voron\OneDrive\Рабочий стол\BudukovPraktika\FinalDirectory";
-    private string _filePath = @"C:\Users\voron\OneDrive\Рабочий стол\BudukovPraktika\FinalDirectory\employee.txt";
+    string _directoryPath = @"C:\Users\voron\OneDrive\Рабочий стол\BudukovPraktika\FinalDirectory";
+    string _filePath = @"C:\Users\voron\OneDrive\Рабочий стол\BudukovPraktika\FinalDirectory\employee.txt";
 
     public EmployeeRegistrationWindow()
     {
+        WindowStartupLocation = WindowStartupLocation.CenterScreen;
         InitializeComponent();
     }
 
@@ -21,6 +22,15 @@ public partial class EmployeeRegistrationWindow : Window
     {
         if (CheckAllINput())
             FillFile();
+    }
+
+    private void backButton_Click(object sender, RoutedEventArgs e) => OpenAuthorizationWindow();
+
+    private void OpenAuthorizationWindow()
+    {
+        AuthorizationWindow authorizationWindow = new AuthorizationWindow();
+        authorizationWindow.Show();
+        Close();
     }
 
     private bool CheckAllINput()

@@ -5,14 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Praktik1"
         mc:Ignorable="d"
-        Title="AuthorizationWindow" Height="400" Width="400">
+        Title="AuthorizationWindow" Height="450" Width="500">
     <Grid>
-        <TextBox x:Name="loginTextBox" HorizontalAlignment="Left" Margin="10,273,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="148" FontFamily="MS Reference Sans Serif" KeyDown="RestartTimerOnAnyInput" Height="20"/>
-        <PasswordBox x:Name="passwordPasBox" HorizontalAlignment="Left" Margin="10,335,0,0" VerticalAlignment="Top" Width="148" KeyDown ="RestartTimerOnAnyInput" Height="21" />
-        <TextBlock HorizontalAlignment="Left" Margin="10,250,0,0" TextWrapping="Wrap" Text="Login" VerticalAlignment="Top" FontFamily="Comic Sans MS" Height="19" Width="36"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,312,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" FontFamily="Comic Sans MS" Height="19" Width="63"/>
-        <Button x:Name="authorizationButton" Content="Authorization" HorizontalAlignment="Left" Margin="268,292,0,0" VerticalAlignment="Top" FontFamily="MS Reference Sans Serif" Click="Button_Click" Height="30" Width="102"/>
-        <Image Margin="122,35,122,192" Source="/Resourses/Images/Picture_4.png" Stretch="Fill"/>
-
+        <TextBox x:Name="loginTextBox" HorizontalAlignment="Left" Margin="50,250,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontFamily="MS Reference Sans Serif"/>
+        <PasswordBox x:Name="passwordPasBox" HorizontalAlignment="Left" Margin="50,300,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="50,230,0,0" TextWrapping="Wrap" Text="Login" VerticalAlignment="Top" FontFamily="Comic Sans MS"/>
+        <TextBlock HorizontalAlignment="Left" Margin="50,280,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" FontFamily="Comic Sans MS"/>
+        <Button x:Name="authorizationButton" Content="Authorization" HorizontalAlignment="Center" Margin="0,374,0,0" VerticalAlignment="Top" FontFamily="MS Reference Sans Serif" Click="Button_Click"/>
+        <Image Source="Resourses\Images\logo.png" Margin="152,10,152,236"/>
     </Grid>
 </Window>
