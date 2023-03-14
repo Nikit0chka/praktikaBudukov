@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="AuthorizationWindow" Height="450" Width="500">
     <Grid>
-        <TextBox x:Name="loginTextBox" HorizontalAlignment="Left" Margin="50,250,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontFamily="MS Reference Sans Serif"/>
+        <TextBox x:Name="loginTextBox" HorizontalAlignment="Left" Margin="50,250,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="16" FontFamily="MS Reference Sans Serif"/>
         <PasswordBox x:Name="passwordPasBox" HorizontalAlignment="Left" Margin="50,300,0,0" VerticalAlignment="Top" Width="120"/>
         <TextBlock HorizontalAlignment="Left" Margin="50,230,0,0" TextWrapping="Wrap" Text="Login" VerticalAlignment="Top" FontFamily="Comic Sans MS"/>
         <TextBlock HorizontalAlignment="Left" Margin="50,280,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" FontFamily="Comic Sans MS"/>

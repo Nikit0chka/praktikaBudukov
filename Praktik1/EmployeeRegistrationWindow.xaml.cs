@@ -82,7 +82,7 @@ public partial class EmployeeRegistrationWindow : Window
         {
             patronymicTextBox.BorderBrush = Brushes.Red;
             isNoException = false;
-            exceptionsContent += "Check patronymic input!";
+            exceptionsContent += "Check patronymic input!\n";
         }
         else
             patronymicTextBox.BorderBrush = Brushes.Green;
