@@ -25,9 +25,9 @@
         </Grid.ColumnDefinitions>
         <Button x:Name="registerUserButton" Content="Register User" HorizontalAlignment="Center" VerticalAlignment="Center" Height="31" Width="102" Click="registerUser_Click" FontFamily="Comic Sans MS" Grid.Column="2" Grid.Row="5"/>
         <Button x:Name ="backButton" Content="Back" HorizontalAlignment="Left" VerticalAlignment="Top" Height="25" Width="44" FontFamily="Comic Sans MS" Click="backButton_Click" Grid.Column ="0" Grid.Row="0" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="idTextBox" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="125" Height="25" FontSize="16" FontFamily="MS Reference Sans Serif" Grid.Row="1" Grid.Column="1" Validation.Error="InputError" TextChanged="AnyTextChange">
+        <TextBox x:Name="idTextBox" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="125" Height="25" FontSize="16" FontFamily="MS Reference Sans Serif" Grid.Row="1" Grid.Column="1">
             <TextBox.Text>
-                <Binding Path="ID" NotifyOnValidationError="True">
+                <Binding Path="ID">
                     <Binding.ValidationRules>
                         <DataErrorValidationRule/>
                     </Binding.ValidationRules>
@@ -45,9 +45,9 @@
                 </Style>
             </TextBox.Style>
         </TextBox>
-        <TextBox x:Name="surnameTextBox" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="125" Height="25" FontSize="16" FontFamily="MS Reference Sans Serif" Grid.Row="2" Grid.Column="1" Validation.Error="InputError" TextChanged="AnyTextChange">
+        <TextBox x:Name="surnameTextBox" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="125" Height="25" FontSize="16" FontFamily="MS Reference Sans Serif" Grid.Row="2" Grid.Column="1">
             <TextBox.Text>
-                <Binding Path="Surname" NotifyOnValidationError="True">
+                <Binding Path="Surname">
                     <Binding.ValidationRules>
                         <DataErrorValidationRule/>
                     </Binding.ValidationRules>
@@ -65,9 +65,9 @@
                 </Style>
             </TextBox.Style>
         </TextBox>
-        <TextBox x:Name="nameTextBox" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="125" Height="25" FontSize="16" FontFamily="MS Reference Sans Serif" Grid.Row="3" Grid.Column ="1" Validation.Error="InputError" TextChanged="AnyTextChange">
+        <TextBox x:Name="nameTextBox" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="125" Height="25" FontSize="16" FontFamily="MS Reference Sans Serif" Grid.Row="3" Grid.Column ="1">
             <TextBox.Text>
-                <Binding Path="Name" NotifyOnValidationError="True">
+                <Binding Path="Name">
                     <Binding.ValidationRules>
                         <DataErrorValidationRule/>
                     </Binding.ValidationRules>
@@ -85,9 +85,9 @@
                 </Style>
             </TextBox.Style>
         </TextBox>
-        <TextBox x:Name="patronymicTextBox" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="125" Height="25" FontSize="16" FontFamily="MS Reference Sans Serif" Grid.Row="4" Grid.Column ="1" Validation.Error="InputError" TextChanged="AnyTextChange">
+        <TextBox x:Name="patronymicTextBox" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="125" Height="25" FontSize="16" FontFamily="MS Reference Sans Serif" Grid.Row="4" Grid.Column ="1">
             <TextBox.Text>
-                <Binding Path="Patronymic" NotifyOnValidationError="True">
+                <Binding Path="Patronymic">
                     <Binding.ValidationRules>
                         <DataErrorValidationRule/>
                     </Binding.ValidationRules>
@@ -105,9 +105,9 @@
                 </Style>
             </TextBox.Style>
         </TextBox>
-        <TextBox x:Name="passportTextBox" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="125" Height="25" FontSize="16" FontFamily="MS Reference Sans Serif" Grid.Row="5" Grid.Column ="1" Validation.Error="InputError" TextChanged="AnyTextChange">
+        <TextBox x:Name="passportTextBox" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="125" Height="25" FontSize="16" FontFamily="MS Reference Sans Serif" Grid.Row="5" Grid.Column ="1">
             <TextBox.Text>
-                <Binding Path="Passport" NotifyOnValidationError="True">
+                <Binding Path="Passport">
                     <Binding.ValidationRules>
                         <DataErrorValidationRule/>
                     </Binding.ValidationRules>
@@ -125,9 +125,9 @@
                 </Style>
             </TextBox.Style>
         </TextBox>
-        <TextBox x:Name="phoneNumberTextBox" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="125" Height="25" FontSize="16" FontFamily="MS Reference Sans Serif" Grid.Row="6" Grid.Column ="1" Validation.Error="InputError" TextChanged="AnyTextChange">
+        <TextBox x:Name="phoneNumberTextBox" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="125" Height="25" FontSize="16" FontFamily="MS Reference Sans Serif" Grid.Row="6" Grid.Column ="1">
             <TextBox.Text>
-                <Binding Path="PhoneNumber" NotifyOnValidationError="True">
+                <Binding Path="PhoneNumber">
                     <Binding.ValidationRules>
                         <DataErrorValidationRule/>
                     </Binding.ValidationRules>
@@ -145,9 +145,9 @@
                 </Style>
             </TextBox.Style>
         </TextBox>
-        <TextBox x:Name="emailTextBox" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="125" Height="25" FontSize="16" FontFamily="MS Reference Sans Serif" Grid.Row="7" Grid.Column ="1" Validation.Error="InputError" TextChanged="AnyTextChange">
+        <TextBox x:Name="emailTextBox" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="125" Height="25" FontSize="16" FontFamily="MS Reference Sans Serif" Grid.Row="7" Grid.Column ="1">
             <TextBox.Text>
-                <Binding Path="Email" NotifyOnValidationError="True">
+                <Binding Path="Email">
                     <Binding.ValidationRules>
                         <DataErrorValidationRule/>
                     </Binding.ValidationRules>

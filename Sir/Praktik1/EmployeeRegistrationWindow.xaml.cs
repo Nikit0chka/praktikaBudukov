@@ -1,17 +1,18 @@
 ﻿using System;
 using System.IO;
 using System.Windows;
-using System.Windows.Controls;
+using System.Threading;
 using System.Windows.Media;
+using System.Threading.Tasks;
+using System.Windows.Threading;
 
 namespace Praktik1;
 
 public partial class EmployeeRegistrationWindow : Window
 {
+    private ValidateEmployeeRegistrationTextBoxes validateTextBoxes;
     private string _directoryPath = @"C:\Users\voron\OneDrive\Рабочий стол\BudukovPraktika\FinalDirectory";
     private string _filePath = @"C:\Users\voron\OneDrive\Рабочий стол\BudukovPraktika\FinalDirectory\employee.txt";
-    private bool _isAllInputCorrect = false;
-    private ValidateEmployeeRegistrationTextBoxes validateTextBoxes;
 
     public EmployeeRegistrationWindow()
     {
@@ -20,14 +21,25 @@ public partial class EmployeeRegistrationWindow : Window
 
         validateTextBoxes = new ValidateEmployeeRegistrationTextBoxes();
         DataContext = validateTextBoxes;
+        //ChangeEnableRegisterUserButtonAsync();
     }
 
-    private void registerUser_Click(object sender, RoutedEventArgs e)
+    private async void ChangeEnableRegisterUserButtonAsync()
     {
-        if (_isAllInputCorrect)
-            FillFile();
 
+        MessageBox.Show("As");
+        registrateEmploye.IsEnabled = false;
+        await Task.Run(() =>
+        {
+            while (!validateTextBoxes.IsAllInputCorrect())
+                MessageBox.Show("Asas");        
+        }
+        );
+        registrateEmploye.IsEnabled = true;
     }
+
+
+    private void registerUser_Click(object sender, RoutedEventArgs e) => FillFile();
 
     private void backButton_Click(object sender, RoutedEventArgs e) => OpenAuthorizationWindow();
 
@@ -85,15 +97,5 @@ public partial class EmployeeRegistrationWindow : Window
             }
         idTextBox.BorderBrush = Brushes.Green;
         return true;
-    }
-
-    private void InputError(object sender, ValidationErrorEventArgs e)
-    {
-        _isAllInputCorrect = false;
-    }
-
-    private void AnyTextChange(object sender, TextChangedEventArgs e)
-    {
-        _isAllInputCorrect = true;
     }
 }

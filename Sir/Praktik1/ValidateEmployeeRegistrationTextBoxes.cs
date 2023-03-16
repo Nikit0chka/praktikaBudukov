@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Linq;
 using System.ComponentModel;
+using System.Collections.Generic;
 
 namespace Praktik1;
 
 internal class ValidateEmployeeRegistrationTextBoxes : IDataErrorInfo
 {
+    private Dictionary<string, bool> IsTextBoxCorrectInput = new Dictionary<string, bool> { { "ID", false }, { "Surname", false }, { "Name", false }, { "Patronymic", false }, { "Passport", false }, { "PhoneNumber", false }, { "Email", false } };
     public string? ID { get; set; }
     public string? Surname { get; set; }
     public string? Name { get; set; }
@@ -14,11 +16,9 @@ internal class ValidateEmployeeRegistrationTextBoxes : IDataErrorInfo
     public string? PhoneNumber { get; set; }
     public string? Email { get; set; }
 
-    private bool IsNoErrors;
-
     public bool IsAllInputCorrect()
     {
-        return IsNoErrors;
+        return IsTextBoxCorrectInput.Values.All(a => a == true);
     }
 
     public string this[string columnName]
@@ -32,87 +32,165 @@ internal class ValidateEmployeeRegistrationTextBoxes : IDataErrorInfo
                     if (ID == null)
                     {
                         error = "ID must be not empty!";
+                        IsTextBoxCorrectInput["ID"] = false;
                         break;
                     }
                     if (!ID.Any(Char.IsNumber))
+                    {
                         error = "ID must contain only numbers!";
+                        IsTextBoxCorrectInput["ID"] = false;
+                        break;
+                    }
+                    IsTextBoxCorrectInput["ID"] = true;
                     break;
 
                 case "Surname":
                     if (Surname == null)
                     {
                         error = "Surname must be not empty!";
+                        IsTextBoxCorrectInput["Surname"] = false;
                         break;
                     }
                     if (!Surname.Any(Char.IsLetter))
+                    {
                         error = "Surname can contain only letters!";
+                        IsTextBoxCorrectInput["Surname"] = false;
+                        break;
+                    }
                     if (!Surname.Skip(1).Any(Char.IsLower))
+                    {
                         error = "All surname letters must be lower except first!";
+                        IsTextBoxCorrectInput["Surname"] = false;
+                        break;
+                    }
                     if (Char.IsLower(Surname[0]))
+                    {
                         error = "First surname letter must be higher!";
+                        IsTextBoxCorrectInput["Surname"] = false;
+                        break;
+                    }
+                    IsTextBoxCorrectInput["Surname"] = true;
                     break;
 
                 case "Name":
                     if (Name == null)
                     {
                         error = "Name must be not empty!";
+                        IsTextBoxCorrectInput["Name"] = false;
                         break;
                     }
                     if (!Name.Any(Char.IsLetter))
+                    {
                         error = "Name can contain only letters!";
+                        IsTextBoxCorrectInput["Name"] = false;
+                        break;
+                    }
                     if (!Name.Skip(1).Any(Char.IsLower))
+                    {
                         error = "All name letters must be lower except first!";
+                        IsTextBoxCorrectInput["Name"] = false;
+                        break;
+                    }
                     if (Char.IsLower(Name[0]))
+                    {
                         error = "First name letter must be higher!";
+                        IsTextBoxCorrectInput["Name"] = false;
+                        break;
+                    }
+                    IsTextBoxCorrectInput["Name"] = true; ;
                     break;
 
                 case "Patronymic":
                     if (Patronymic == null)
+                    {
+                        IsTextBoxCorrectInput["Patronymic"] = true;
                         break;
+                    }
                     if (!Patronymic.Any(Char.IsLetter))
+                    {
                         error = "Patronymic can contain only letters!";
+                        IsTextBoxCorrectInput["Patronymic"] = false;
+                        break;
+                    }
                     if (!Patronymic.Skip(1).Any(Char.IsLower))
+                    {
                         error = "All patronymic letters must be lower except first!";
+                        IsTextBoxCorrectInput["Patronymic"] = false;
+                        break;
+                    }
                     if (Char.IsLower(Patronymic[0]))
+                    {
                         error = "First patronymic letter must be higher!";
+                        IsTextBoxCorrectInput["Patronymic"] = false;
+                        break;
+                    }
+                    IsTextBoxCorrectInput["Patronymic"] = true;
                     break;
 
                 case "Passport":
                     if (Passport == null)
                     {
                         error = "Passport must be not empty!";
+                        IsTextBoxCorrectInput["Passport"] = false;
                         break;
                     }
                     if (Passport.Length != 10)
+                    {
                         error = "Passport must include ten numbers!";
+                        IsTextBoxCorrectInput["Passport"] = false;
+                        break;
+                    }
                     if (!Passport.Any(Char.IsNumber))
+                    {
                         error = "Passport must include only numbers!";
+                        IsTextBoxCorrectInput["Passport"] = false;
+                        break;
+                    }
+                    IsTextBoxCorrectInput["Passport"] = true;
                     break;
 
                 case "PhoneNumber":
                     if (PhoneNumber == null)
+                    {
+                        IsTextBoxCorrectInput["PhoneNumber"] = true;
                         break;
+                    }
                     if ((PhoneNumber[0] != '+' || PhoneNumber.Length != 12) && (PhoneNumber[0] != '8' || PhoneNumber.Length != 11))
+                    {
                         error = "Phone number must look like +79873691806 or 89873691806!";
+                        IsTextBoxCorrectInput["PhoneNumber"] = false; 
+                        break;
+                    }
                     if (!PhoneNumber.Skip(1).Any(Char.IsNumber))
+                    {
                         error = "Phone number must contain only numbers except '+'!";
+                        IsTextBoxCorrectInput["PhoneNumber"] = false;
+                        break;
+                    }
+                    IsTextBoxCorrectInput["PhoneNumber"] = true;
                     break;
 
                 case "Email":
                     if (Email == null)
                     {
                         error = "Email must be not empty!";
+                        IsTextBoxCorrectInput["Email"] = false;
                         break;
                     }
                     if (!Email.Contains('@') || !Email.Substring(Email.IndexOf('@')).Contains('.'))
+                    {
                         error = "Email must contain '@' and '.' in domen!";
+                        IsTextBoxCorrectInput["Email"] = false;
+                        break;
+                    }
+                    IsTextBoxCorrectInput["Email"] = true;
                     break;
             }
-            IsNoErrors = (error == string.Empty) ? true : false;
-
+            
             return error;
         }
     }
+
     public string Error
     {
         get => throw new NotImplementedException();
