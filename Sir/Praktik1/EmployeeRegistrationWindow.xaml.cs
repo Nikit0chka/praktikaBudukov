@@ -1,16 +1,14 @@
 ﻿using System;
 using System.IO;
 using System.Windows;
-using System.Threading;
 using System.Windows.Media;
-using System.Threading.Tasks;
-using System.Windows.Threading;
 
 namespace Praktik1;
 
 public partial class EmployeeRegistrationWindow : Window
 {
-    private ValidateEmployeeRegistrationTextBoxes validateTextBoxes;
+    private ValidateEmployeeRegistrationTextBoxes _validateTextBoxes;
+    
     private string _directoryPath = @"C:\Users\voron\OneDrive\Рабочий стол\BudukovPraktika\FinalDirectory";
     private string _filePath = @"C:\Users\voron\OneDrive\Рабочий стол\BudukovPraktika\FinalDirectory\employee.txt";
 
@@ -19,25 +17,13 @@ public partial class EmployeeRegistrationWindow : Window
         WindowStartupLocation = WindowStartupLocation.CenterScreen;
         InitializeComponent();
 
-        validateTextBoxes = new ValidateEmployeeRegistrationTextBoxes();
-        DataContext = validateTextBoxes;
-        //ChangeEnableRegisterUserButtonAsync();
+        _validateTextBoxes = new ValidateEmployeeRegistrationTextBoxes();
+        DataContext = _validateTextBoxes;
+        ChangeEnableRegisterUserButton();
     }
 
-    private async void ChangeEnableRegisterUserButtonAsync()
-    {
-
-        MessageBox.Show("As");
-        registrateEmploye.IsEnabled = false;
-        await Task.Run(() =>
-        {
-            while (!validateTextBoxes.IsAllInputCorrect())
-                MessageBox.Show("Asas");        
-        }
-        );
-        registrateEmploye.IsEnabled = true;
-    }
-
+    private void ChangeEnableRegisterUserButton() =>
+        registerUserButton.IsEnabled = _validateTextBoxes.IsAllInputCorrect() ? true : false;
 
     private void registerUser_Click(object sender, RoutedEventArgs e) => FillFile();
 
@@ -98,4 +84,7 @@ public partial class EmployeeRegistrationWindow : Window
         idTextBox.BorderBrush = Brushes.Green;
         return true;
     }
+
+    private void AnyTextChange(object sender, System.Windows.Input.MouseEventArgs e) =>
+        ChangeEnableRegisterUserButton();
 }

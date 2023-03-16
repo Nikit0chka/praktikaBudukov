@@ -15,19 +15,17 @@ public partial class AuthorizationWindow : Window
     private CancellationTokenSource _isAuthorizationWindowOpened = new CancellationTokenSource();
     private Stopwatch _timeFromLastInput = Stopwatch.StartNew();
     private TimeSpan _maxNonUseTime = new TimeSpan(0, 3, 0);
+    
     private int _authorizationAttempts = 0;
 
     public AuthorizationWindow()
     {
         WindowStartupLocation = WindowStartupLocation.CenterScreen;
         InitializeComponent();
-        IsAppUsing(_isAuthorizationWindowOpened.Token);
+        NotifyAppNotUsingAsync(_isAuthorizationWindowOpened.Token);
     }
 
-    private void Button_Click(object sender, RoutedEventArgs e)
-    {
-        CheckAllInput();
-    }
+    private void Button_Click(object sender, RoutedEventArgs e) => CheckAllInput();
 
     private void OpenEmployeeRegistrationWindow()
     {
@@ -37,35 +35,7 @@ public partial class AuthorizationWindow : Window
         Close();
     }
 
-    private async void IsAppUsing(CancellationToken cancellationToken)
-    {
-        await Task.Run(() =>
-        {
-            while (!cancellationToken.IsCancellationRequested)
-                if (_timeFromLastInput.Elapsed > _maxNonUseTime)
-                {
-                    if (MessageBox.Show("Close?", "App is not using!", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-                        Close();
-                    _timeFromLastInput.Restart();
-                }
-        });
-    }
-
-    private void RestartTimerOnAnyInput(object sender, KeyEventArgs e)
-    {
-        _timeFromLastInput.Restart();
-    }
-
-    private async void DisableInputForOneMinute()
-    {
-        authorizationButton.IsEnabled = false;
-        loginTextBox.BorderBrush = Brushes.Gray;
-        passwordPasBox.BorderBrush = Brushes.Gray;
-
-        await Task.Delay(60 * 1000);
-
-        authorizationButton.IsEnabled = true;
-    }
+    private void RestartStopWatchOnAnyInput(object sender, KeyEventArgs e) => _timeFromLastInput.Restart();
 
     private void CheckAllInput()
     {
@@ -85,5 +55,30 @@ public partial class AuthorizationWindow : Window
             passwordPasBox.BorderBrush = Brushes.Red;
             loginTextBox.BorderBrush = Brushes.Red;
         }
+    }
+    
+    private async void DisableInputForOneMinute()
+    {
+        authorizationButton.IsEnabled = false;
+        loginTextBox.BorderBrush = Brushes.Gray;
+        passwordPasBox.BorderBrush = Brushes.Gray;
+
+        await Task.Delay(60 * 1000);
+
+        authorizationButton.IsEnabled = true;
+    }
+
+    private async void NotifyAppNotUsingAsync(CancellationToken cancellationToken)
+    {
+        await Task.Run(() =>
+        {
+            while (!cancellationToken.IsCancellationRequested)
+                if (_timeFromLastInput.Elapsed > _maxNonUseTime)
+                {
+                    if (MessageBox.Show("Close?", "App is not using!", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                        Close();
+                    _timeFromLastInput.Restart();
+                }
+        });
     }
 }

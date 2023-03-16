@@ -7,7 +7,7 @@ namespace Praktik1;
 
 internal class ValidateEmployeeRegistrationTextBoxes : IDataErrorInfo
 {
-    private Dictionary<string, bool> IsTextBoxCorrectInput = new Dictionary<string, bool> { { "ID", false }, { "Surname", false }, { "Name", false }, { "Patronymic", false }, { "Passport", false }, { "PhoneNumber", false }, { "Email", false } };
+    private Dictionary<string, bool> IsTextBoxCorrectInput = new Dictionary<string, bool> { { "ID", false }, { "Surname", false }, { "Name", false }, { "Patronymic", true }, { "Passport", false }, { "PhoneNumber", true }, { "Email", false } };
     public string? ID { get; set; }
     public string? Surname { get; set; }
     public string? Name { get; set; }
@@ -185,8 +185,7 @@ internal class ValidateEmployeeRegistrationTextBoxes : IDataErrorInfo
                     }
                     IsTextBoxCorrectInput["Email"] = true;
                     break;
-            }
-            
+            }            
             return error;
         }
     }
