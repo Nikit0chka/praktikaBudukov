@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "PraktikaBudukovGrafik/1.0.0": {
+        "runtime": {
+          "PraktikaBudukovGrafik.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "PraktikaBudukovGrafik/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
