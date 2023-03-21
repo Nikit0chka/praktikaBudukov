@@ -35,7 +35,7 @@ internal class ValidateEmployeeRegistrationTextBoxes : IDataErrorInfo
                         IsTextBoxCorrectInput["ID"] = false;
                         break;
                     }
-                    if (!ID.Any(Char.IsNumber))
+                    if (!ID.All(Char.IsNumber))
                     {
                         error = "ID must contain only numbers!";
                         IsTextBoxCorrectInput["ID"] = false;
@@ -51,13 +51,13 @@ internal class ValidateEmployeeRegistrationTextBoxes : IDataErrorInfo
                         IsTextBoxCorrectInput["Surname"] = false;
                         break;
                     }
-                    if (!Surname.Any(Char.IsLetter))
+                    if (!Surname.All(Char.IsLetter))
                     {
-                        error = "Surname can contain only letters!";
+                        error = "Surname must contain only letters!";
                         IsTextBoxCorrectInput["Surname"] = false;
                         break;
                     }
-                    if (!Surname.Skip(1).Any(Char.IsLower))
+                    if (!Surname.Skip(1).All(Char.IsLower))
                     {
                         error = "All surname letters must be lower except first!";
                         IsTextBoxCorrectInput["Surname"] = false;
@@ -79,13 +79,13 @@ internal class ValidateEmployeeRegistrationTextBoxes : IDataErrorInfo
                         IsTextBoxCorrectInput["Name"] = false;
                         break;
                     }
-                    if (!Name.Any(Char.IsLetter))
+                    if (!Name.All(Char.IsLetter))
                     {
                         error = "Name can contain only letters!";
                         IsTextBoxCorrectInput["Name"] = false;
                         break;
                     }
-                    if (!Name.Skip(1).Any(Char.IsLower))
+                    if (!Name.Skip(1).All(Char.IsLower))
                     {
                         error = "All name letters must be lower except first!";
                         IsTextBoxCorrectInput["Name"] = false;
@@ -106,13 +106,13 @@ internal class ValidateEmployeeRegistrationTextBoxes : IDataErrorInfo
                         IsTextBoxCorrectInput["Patronymic"] = true;
                         break;
                     }
-                    if (!Patronymic.Any(Char.IsLetter))
+                    if (!Patronymic.All(Char.IsLetter))
                     {
                         error = "Patronymic can contain only letters!";
                         IsTextBoxCorrectInput["Patronymic"] = false;
                         break;
                     }
-                    if (!Patronymic.Skip(1).Any(Char.IsLower))
+                    if (!Patronymic.Skip(1).All(Char.IsLower))
                     {
                         error = "All patronymic letters must be lower except first!";
                         IsTextBoxCorrectInput["Patronymic"] = false;
@@ -140,7 +140,7 @@ internal class ValidateEmployeeRegistrationTextBoxes : IDataErrorInfo
                         IsTextBoxCorrectInput["Passport"] = false;
                         break;
                     }
-                    if (!Passport.Any(Char.IsNumber))
+                    if (!Passport.All(Char.IsNumber))
                     {
                         error = "Passport must include only numbers!";
                         IsTextBoxCorrectInput["Passport"] = false;
@@ -155,13 +155,13 @@ internal class ValidateEmployeeRegistrationTextBoxes : IDataErrorInfo
                         IsTextBoxCorrectInput["PhoneNumber"] = true;
                         break;
                     }
-                    if ((PhoneNumber[0] != '+' || PhoneNumber.Length != 12) && (PhoneNumber[0] != '8' || PhoneNumber.Length != 11))
+                    if (((PhoneNumber[0] == '+' && PhoneNumber[1] != '7') || PhoneNumber.Length != 12) && (PhoneNumber[0] != '8' || PhoneNumber.Length != 11))
                     {
                         error = "Phone number must look like +79873691806 or 89873691806!";
                         IsTextBoxCorrectInput["PhoneNumber"] = false; 
                         break;
                     }
-                    if (!PhoneNumber.Skip(1).Any(Char.IsNumber))
+                    if (!PhoneNumber.Skip(1).All(Char.IsNumber))
                     {
                         error = "Phone number must contain only numbers except '+'!";
                         IsTextBoxCorrectInput["PhoneNumber"] = false;
@@ -177,9 +177,9 @@ internal class ValidateEmployeeRegistrationTextBoxes : IDataErrorInfo
                         IsTextBoxCorrectInput["Email"] = false;
                         break;
                     }
-                    if (!Email.Contains('@') || !Email.Substring(Email.IndexOf('@')).Contains('.'))
+                    if (Email.Where(x => x == '@').Count() != 1 || Email.Substring(Email.IndexOf('@')).Where(x => x == '.').Count() != 1)
                     {
-                        error = "Email must contain '@' and '.' in domen!";
+                        error = "Email must contain one '@' and one '.' in domen!";
                         IsTextBoxCorrectInput["Email"] = false;
                         break;
                     }

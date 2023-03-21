@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\voron\\OneDrive\\Рабочий стол\\praktikaBudukov\\Sir\\Praktik1\\Praktik1.csproj",
+      "projectUniqueName": "C:\\Users\\voron\\OneDrive\\Рабочий стол\\praktikaBudukov\\PraktikaBudukov\\PraktikaBudukov123\\Praktik1.csproj",
       "projectName": "Praktik1",
-      "projectPath": "C:\\Users\\voron\\OneDrive\\Рабочий стол\\praktikaBudukov\\Sir\\Praktik1\\Praktik1.csproj",
+      "projectPath": "C:\\Users\\voron\\OneDrive\\Рабочий стол\\praktikaBudukov\\PraktikaBudukov\\PraktikaBudukov123\\Praktik1.csproj",
       "packagesPath": "C:\\Users\\voron\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\voron\\OneDrive\\Рабочий стол\\praktikaBudukov\\Sir\\Praktik1\\obj\\",
+      "outputPath": "C:\\Users\\voron\\OneDrive\\Рабочий стол\\praktikaBudukov\\PraktikaBudukov\\PraktikaBudukov123\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

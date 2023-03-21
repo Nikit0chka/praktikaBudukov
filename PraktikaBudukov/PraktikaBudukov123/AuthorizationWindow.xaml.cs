@@ -2,7 +2,6 @@
 using System.Windows;
 using System.Threading;
 using System.Diagnostics;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Threading.Tasks;
 
@@ -35,12 +34,12 @@ public partial class AuthorizationWindow : Window
         Close();
     }
 
-    private void RestartStopWatchOnAnyInput(object sender, KeyEventArgs e) => _timeFromLastInput.Restart();
+    private void RestartStopWatchOnAnyInput() => _timeFromLastInput.Restart();
 
     private void CheckAllInput()
     {
         _authorizationAttempts++;
-
+        _timeFromLastInput.Restart();
         if (passwordPasBox.Password == "employee" && loginTextBox.Text == "employee")
             OpenEmployeeRegistrationWindow();
 
@@ -77,8 +76,11 @@ public partial class AuthorizationWindow : Window
                 {
                     if (MessageBox.Show("Close?", "App is not using!", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                         Close();
-                    _timeFromLastInput.Restart();
+                    RestartStopWatchOnAnyInput();
                 }
         });
     }
+
+    private void loginTextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e) => RestartStopWatchOnAnyInput();
+    private void passwordPasBox_PasswordChanged(object sender, RoutedEventArgs e) => RestartStopWatchOnAnyInput();
 }

@@ -8,7 +8,7 @@ namespace PraktikaBudukovGrafik
 {
     public partial class MainWindow : Window
     {
-        private const int _dotCount = 150;
+        private const int _dotCount = 30;
         private List<double[]> _dataList = new List<double[]>();
         private DrawingGroup _drawingGroup = new DrawingGroup();
 
@@ -23,16 +23,13 @@ namespace PraktikaBudukovGrafik
         private void DataFill()
         {
             double[] sin = new double[_dotCount + 1];
-            double[] cos = new double[_dotCount + 1];
 
             for (int i = 0; i < sin.Length; i++)
             {
-                double angle = Math.PI * 2 / _dotCount * i;
-                sin[i] = Math.Sqrt(Math.Sqrt(Math.Pow(3, angle))) * Math.Sin(Math.Pow(3, angle));
-                cos[i] = Math.Cos(angle);
+                double angle = Math.PI * 1 / _dotCount * i;
+                sin[i] = Math.Sqrt(Math.Pow(angle,3)) * Math.Sin(Math.Pow(angle,3));
             }
             _dataList.Add(sin);
-            _dataList.Add(cos);
         }
 
         private void BackGroundFun()
@@ -40,7 +37,7 @@ namespace PraktikaBudukovGrafik
             GeometryDrawing geometryDrawing = new GeometryDrawing();
 
             RectangleGeometry rectangleGeometry = new RectangleGeometry();
-            rectangleGeometry.Rect = new Rect(0, -2, 6, 6);
+            rectangleGeometry.Rect = new Rect(0, 0, 4, 4);
             geometryDrawing.Geometry = rectangleGeometry;
 
             geometryDrawing.Pen = new Pen(Brushes.Red, 0.005);
@@ -53,9 +50,9 @@ namespace PraktikaBudukovGrafik
         {
             GeometryGroup geometryGroup = new GeometryGroup();
 
-            for (int i = -20; i < 40; i++)
+            for (int i =0; i < 40; i++)
             {
-                LineGeometry line = new LineGeometry(new Point(0, i * 0.1), new Point(6.1, i * 0.1));
+                LineGeometry line = new LineGeometry(new Point(0, i * 0.1), new Point(4.1, i * 0.1));
                 geometryGroup.Children.Add(line);
             }
 
@@ -79,8 +76,8 @@ namespace PraktikaBudukovGrafik
             {
                 LineGeometry line = new LineGeometry
                 (
-                    new Point((double)i / (double)_dotCount, .99 - (_dataList[0][i] / 2.0)),
-                    new Point((double)(i + 1) / (double)_dotCount, .99 - (_dataList[0][i + 1] / 2.0))
+                    new Point((double)i / (double)_dotCount, 2.3 - (_dataList[0][i] / 2.0)),
+                    new Point((double)(i + 1) / (double)_dotCount, 2.3 - (_dataList[0][i + 1] / 2.0))
                 );
                 geometryGroup.Children.Add(line);
             }
@@ -98,7 +95,7 @@ namespace PraktikaBudukovGrafik
         {
             GeometryGroup geometryGroup = new GeometryGroup();
 
-            for (int i = -20; i <= 40; i++)
+            for (int i = -18; i <= 21; i++)
             {
                 FormattedText formattedText = new FormattedText
                     (string.Format("{0,1}", Math.Round(1 - i * 0.2, 2)),
@@ -110,7 +107,7 @@ namespace PraktikaBudukovGrafik
 
                 formattedText.SetFontWeight(FontWeights.Bold);
 
-                Geometry geometry = formattedText.BuildGeometry(new Point(-0.2, i * 0.1 - 0.03));
+                Geometry geometry = formattedText.BuildGeometry(new Point(-0.2, (i+18) * 0.1 - 0.03));
                 geometryGroup.Children.Add(geometry);
             }
 

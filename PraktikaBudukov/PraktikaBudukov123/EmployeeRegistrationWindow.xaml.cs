@@ -25,7 +25,11 @@ public partial class EmployeeRegistrationWindow : Window
     private void ChangeEnableRegisterUserButton() =>
         registerUserButton.IsEnabled = _validateTextBoxes.IsAllInputCorrect() ? true : false;
 
-    private void registerUser_Click(object sender, RoutedEventArgs e) => FillFile();
+    private void registerUser_Click(object sender, RoutedEventArgs e)
+    {
+        ChangeEnableRegisterUserButton();
+        FillFile();
+    }
 
     private void backButton_Click(object sender, RoutedEventArgs e) => OpenAuthorizationWindow();
 

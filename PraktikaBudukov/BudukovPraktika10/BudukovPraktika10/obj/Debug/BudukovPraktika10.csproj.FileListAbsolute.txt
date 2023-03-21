@@ -1,0 +1,8 @@
+C:\Users\voron\OneDrive\Рабочий стол\praktikaBudukov\PraktikaBudukov\BudukovPraktika10\BudukovPraktika10\bin\Debug\BudukovPraktika10.exe.config
+C:\Users\voron\OneDrive\Рабочий стол\praktikaBudukov\PraktikaBudukov\BudukovPraktika10\BudukovPraktika10\bin\Debug\BudukovPraktika10.exe
+C:\Users\voron\OneDrive\Рабочий стол\praktikaBudukov\PraktikaBudukov\BudukovPraktika10\BudukovPraktika10\bin\Debug\BudukovPraktika10.pdb
+C:\Users\voron\OneDrive\Рабочий стол\praktikaBudukov\PraktikaBudukov\BudukovPraktika10\BudukovPraktika10\obj\Debug\BudukovPraktika10.csproj.AssemblyReference.cache
+C:\Users\voron\OneDrive\Рабочий стол\praktikaBudukov\PraktikaBudukov\BudukovPraktika10\BudukovPraktika10\obj\Debug\BudukovPraktika10.csproj.SuggestedBindingRedirects.cache
+C:\Users\voron\OneDrive\Рабочий стол\praktikaBudukov\PraktikaBudukov\BudukovPraktika10\BudukovPraktika10\obj\Debug\BudukovPraktika10.csproj.CoreCompileInputs.cache
+C:\Users\voron\OneDrive\Рабочий стол\praktikaBudukov\PraktikaBudukov\BudukovPraktika10\BudukovPraktika10\obj\Debug\BudukovPraktika10.exe
+C:\Users\voron\OneDrive\Рабочий стол\praktikaBudukov\PraktikaBudukov\BudukovPraktika10\BudukovPraktika10\obj\Debug\BudukovPraktika10.pdb
