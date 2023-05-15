@@ -8,7 +8,7 @@ namespace Praktik1;
 public partial class EmployeeRegistrationWindow : Window
 {
     private ValidateEmployeeRegistrationTextBoxes _validateTextBoxes;
-    
+
     private string _directoryPath = @"C:\Users\voron\OneDrive\Рабочий стол\BudukovPraktika\FinalDirectory";
     private string _filePath = @"C:\Users\voron\OneDrive\Рабочий стол\BudukovPraktika\FinalDirectory\employee.txt";
 
@@ -28,7 +28,8 @@ public partial class EmployeeRegistrationWindow : Window
     private void registerUser_Click(object sender, RoutedEventArgs e)
     {
         ChangeEnableRegisterUserButton();
-        FillFile();
+        if (_validateTextBoxes.IsAllInputCorrect())
+            FillFile();
     }
 
     private void backButton_Click(object sender, RoutedEventArgs e) => OpenAuthorizationWindow();
